@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-const port = require('./feed-readings');
+// const port = require('./feed-readings');
 
 // var routes = require('./routes/index');
 // var users = require('./routes/users');
@@ -37,18 +37,6 @@ io.on('connection', (socket) => {
     clients = Object.keys(io.sockets.connected);
     io.emit('user-disconnected', clients.length);
   });
-
-  // socket.on('turn-on-loadLight', () => {
-  //   port.write("loadLight:1\r\n");
-  // });
-
-  // socket.on('turn-off-loadLight', () => {
-  //   port.write("loadLight:0\r\n");
-  // });
-
-    socket.on('loadLight-value-change', (data) => {
-      port.write(data);
-    });
 });
 
 
@@ -58,8 +46,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  io.emit('readings', req.body.readings);
-  console.log(req.body.readings);
+  io.emit('readings', req.body);
+  console.log(req.body);
 });
 
 

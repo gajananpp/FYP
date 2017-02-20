@@ -36,11 +36,11 @@ class AppBody extends React.Component {
 
 	updateReadings(readings) {
 		this.setState({
-			humidity: readings.humidity,
-			temperature: readings.temperature,
-			brightness: readings.brightness,
+			humidity: readings[0].value,
+			temperature: readings[1].value,
+			brightness: readings[2].value,
 
-			loadLightValue: readings.loadLightValue,
+			// loadLightValue: readings.loadLightValue,
 		});
 	}
 
@@ -98,7 +98,8 @@ class AppBody extends React.Component {
 				 			overlay={<CardTitle title={`Current ${obj.quantity}: ${obj.currentReading} ${obj.unit}`} subtitle={""} />}
 				 		>
 				 			<RTChart
-				 				flow={{duration: 5000}}
+				 				style={{marginTop: 10}}
+				 				flow={{duration: 3000}}
 				 				maxValues={12} 
 				 				fields={[obj.quantity]}
 				 				data={

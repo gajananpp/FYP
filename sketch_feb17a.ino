@@ -42,9 +42,9 @@
 
    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PROGRAM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-   #include <ESP8266WiFi.h>
-   #include <ESP8266WiFiMulti.h>
-   #include <ESP8266HTTPClient.h>
+//   #include <ESP8266WiFi.h>
+//   #include <ESP8266WiFiMulti.h>
+//   #include <ESP8266HTTPClient.h>
 
    #include "dht.h"                                                                 // library for DHT11
    #include "ArduinoJson.h"                                                         // library to suppport data-interchange format between arduino and server
@@ -54,10 +54,10 @@
    #define DHT11_PIN 7                                                              //  data from DHT11 is available on pin 7 of arduino
    #define LDR_PIN   A0                                                             //  data from LDR is available on pin A0 of arduino
 
-   ESP8266WiFiMulti WiFiMulti;
-   const char* SSID     = "Tenda";
-   const char* PASSWORD = "pRpatil@7225";
-   HTTPClient http;
+//   ESP8266WiFiMulti WiFiMulti;
+//   const char* SSID     = "Tenda";
+//   const char* PASSWORD = "pRpatil@7225";
+//   HTTPClient http;
 
    int manualLoadControl = 0;                                                       // if 1 loads can be controlled manually through application else will be controlled according to sensor readings
 
@@ -82,8 +82,8 @@
    String responseFromServer = "";                                                   //  initialise string received from server 
 
    /* Wifi related functions */
-   void connectToAp(char*, char*);                                                   // calling this function connects MCU to Wifi using given ssid and password
-   void sendPostRequest(JsonArray&);                                                 // send data to server in POST request payload
+//   void connectToAp(char*, char*);                                                   // calling this function connects MCU to Wifi using given ssid and password
+//   void sendPostRequest(JsonArray&);                                                 // send data to server in POST request payload
 
    /* calling below functions gives us current readings */
    float getHumidity(int);                                                           //  calling this function returns current humidity reading (in %)
@@ -98,7 +98,7 @@
    void setup() {
       Serial.begin(115200);                                                          // begin serial communication at a baud-rate of 115200 bps
       delay(50);
-      connectToAp(SSID, PASSWORD);
+//      connectToAp(SSID, PASSWORD);
    }
 
    void loop() {
@@ -113,8 +113,8 @@
       JsonArray& dataToServer      =  generateJson(formattedData, N_SENSORS);
 
       /* send data to server */
-//      sendDataToServer(dataToServer);
-      sendPostRequest(dataToServer);
+      sendDataToServer(dataToServer);
+//      sendPostRequest(dataToServer);
       
       delay(2000);                                                                   // readings taken every 2 seconds  
    }
@@ -127,22 +127,22 @@
     * @param   ssid      char*   WiFi name
     * @param   password  char*   WiFi password
     */
-    void connectToAp(const char* ssid, const char* password) {
-        WiFiMulti.addAP(ssid, password);
-        Serial.println();
-        Serial.println();
-        Serial.print("Wait for Wifi... ");
-
-        while (WiFiMulti.run()!= WL_CONNECTED) {
-            Serial.print(".");
-            delay(500);
-        }
-        Serial.println("");
-        Serial.println("WiFi Connected!!!");
-        Serial.println("IP Address: ");
-        Serial.println(WiFi.localIP());
-        delay(500);
-    }
+//    void connectToAp(const char* ssid, const char* password) {
+//        WiFiMulti.addAP(ssid, password);
+//        Serial.println();
+//        Serial.println();
+//        Serial.print("Wait for Wifi... ");
+//
+//        while (WiFiMulti.run()!= WL_CONNECTED) {
+//            Serial.print(".");
+//            delay(500);
+//        }
+//        Serial.println("");
+//        Serial.println("WiFi Connected!!!");
+//        Serial.println("IP Address: ");
+//        Serial.println(WiFi.localIP());
+//        delay(500);
+//    }
 
     /**
       * sendPostRequest
@@ -150,16 +150,16 @@
       * 
       * @param    payload     JsonArray&      JSON Array containing readings from sensor
       */
-     void sendPostRequest(JsonArray& payload) {
-        char buffer[500];
-        payload.printTo(buffer, sizeof(buffer));
-        Serial.println("[HTTP] begin...");
-        http.begin("http://192.168.0.103/");
-        http.addHeader("Content-Type", "application/json");
-        http.POST(buffer);
-        http.writeToStream(&Serial);
-        http.end();
-     }
+//     void sendPostRequest(JsonArray& payload) {
+//        char buffer[500];
+//        payload.prettyPrintTo(buffer, sizeof(buffer));
+//        Serial.println("[HTTP] begin...");
+//        http.begin("http://192.168.0.103/");
+//        http.addHeader("Content-Type", "application/json");
+//        http.POST(buffer);
+//        http.writeToStream(&Serial);
+//        http.end();
+//     }
 
    
    /**
@@ -185,7 +185,7 @@
    float getTemperature(int sensorPin) {
       delay(100);
       int chk                  = DHT.read11(sensorPin);
-      float currentTemperature = DHT.humidity;
+      float currentTemperature = DHT.temperature;
       return currentTemperature; 
    }
 
@@ -252,7 +252,9 @@
     *   @param    data    JsonArray&    data to be sent to server
     */
    void sendDataToServer(JsonArray& data) {
-      data.prettyPrintTo(Serial);
+      char buffer[500];
+      data.printTo(buffer, sizeof(buffer));
+      Serial.println(buffer);
    }
    
    

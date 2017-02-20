@@ -9,39 +9,16 @@ const requestOptions = {
 };
 
 
-const port = new SerialPort('COM7', {baudRate: 9600, parser: SerialPort.parsers.readline('\r\n')}, (err) => {
+const port = new SerialPort('COM11', {baudRate: 115200, parser: SerialPort.parsers.readline('\r\n')}, (err) => {
 	if (err)
 		return console.log(`Error in opening port: ${err}`);
 	console.log("Port Opened !!!");
 });
 
 port.on('data', (data) => {
-	// console.log(`Data: ${data}`);
+	let payload = JSON.parse(data);
 
-	let dataArr = data.split(',');
-	dataArr = dataArr.map((item, index) => {
-		let itemArr = item.split(':');
-		return {
-			[itemArr[0]]: parseFloat(itemArr[1])
-		};
-	});
-
-	let dataObj = dataArr.reduce((result, currentObj) => {
-		for (let key in currentObj) {
-			if (currentObj.hasOwnProperty(key)) {
-				result[key] = currentObj[key];
-			}
-		}
-		return result;
-	}, {});
-
-	// console.log(dataObj);
-
-	const payLoad ={
-		'readings': dataObj
-	};
-
-	requestOptions.body = payLoad;
+	requestOptions.body = payload;
 	request(requestOptions, (err, res, body) => {
 		if (err)
 			console.log(`Error: ${err}`);

@@ -37,6 +37,7 @@ class AppHeader extends React.Component {
 		socket.on('user-disconnected', (usersOnline) => {
 			this.userDisconnected(usersOnline);
 		});
+		this.forceUpdate();
 	}
 
 	render() {
