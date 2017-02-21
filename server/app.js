@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-// const port = require('./feed-readings');
+const port = require('./feed-readings');
 
 // var routes = require('./routes/index');
 // var users = require('./routes/users');
@@ -13,6 +13,10 @@ var bodyParser = require('body-parser');
 var app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+
+
+const respPayload = {};
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -37,6 +41,10 @@ io.on('connection', (socket) => {
     clients = Object.keys(io.sockets.connected);
     io.emit('user-disconnected', clients.length);
   });
+
+  socket.on('toggle-manual-control', (isEnabled) => {
+    respPayload.manualLoadControl= isEnabled;
+  });
 });
 
 
@@ -47,7 +55,9 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
   io.emit('readings', req.body);
-  console.log(req.body);
+  // console.log(req.headers)
+  // console.log(req.body);
+  res.send(respPayload);
 });
 
 
@@ -84,4 +94,4 @@ app.use(function(err, req, res, next) {
 });
 
 
-http.listen(3000);
+http.listen(80);

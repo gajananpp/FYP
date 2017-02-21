@@ -5,7 +5,7 @@ const request = require('request');
 const requestOptions = {
 	method: 'post',
 	json: true,
-	url: 'http://localhost:3000/'
+	url: 'http://localhost:80/'
 };
 
 
@@ -22,6 +22,8 @@ port.on('data', (data) => {
 	request(requestOptions, (err, res, body) => {
 		if (err)
 			console.log(`Error: ${err}`);
+		// console.log(res.body);
+		port.write(JSON.stringify(res.body));
 	});
 });
 

@@ -8,6 +8,10 @@ const styles = {
 	fontIcon: {
 		color: 'white',
 	},
+	AppIcon: {
+		marginTop: 11,
+		color: 'white',
+	},
 };
 
 class AppHeader extends React.Component {
@@ -37,16 +41,15 @@ class AppHeader extends React.Component {
 		socket.on('user-disconnected', (usersOnline) => {
 			this.userDisconnected(usersOnline);
 		});
-		this.forceUpdate();
 	}
 
 	render() {
+		// setTimeout(this.forceUpdate(), 5000);
 		return (
 			<div>
 				<AppBar 
 					title="WSN"
-					showMenuIconButton={false}
-					iconElementLeft={<FontIcon className="fa fa-rocket" style={styles.fontIcon} />}
+					iconElementLeft={<FontIcon className="fa fa-microchip" style={styles.AppIcon} />}
 					iconElementRight={<Badge badgeContent={this.state.usersOnline} secondary={true}><FontIcon className="fa fa-user" style={styles.fontIcon} /></Badge>}
 				/>
 			</div>

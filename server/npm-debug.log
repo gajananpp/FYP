@@ -1,0 +1,49 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'D:\\Developer_Programs\\NODEJS\\node.exe',
+1 verbose cli   'D:\\Developer_Programs\\NODEJS\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'compile' ]
+2 info using npm@3.10.8
+3 info using node@v7.0.0
+4 verbose run-script [ 'precompile', 'compile', 'postcompile' ]
+5 info lifecycle v1@0.0.0~precompile: v1@0.0.0
+6 silly lifecycle v1@0.0.0~precompile: no script for precompile, continuing
+7 info lifecycle v1@0.0.0~compile: v1@0.0.0
+8 verbose lifecycle v1@0.0.0~compile: unsafe-perm in lifecycle true
+9 verbose lifecycle v1@0.0.0~compile: PATH: D:\Developer_Programs\NODEJS\node_modules\npm\bin\node-gyp-bin;C:\Users\User\Desktop\final-year-project-arduino\fyp\node_modules\.bin;C:\Users\User\bin;D:\Developer_Programs\git\Github\Git\mingw64\bin;D:\Developer_Programs\git\Github\Git\usr\local\bin;D:\Developer_Programs\git\Github\Git\usr\bin;D:\Developer_Programs\git\Github\Git\usr\bin;D:\Developer_Programs\git\Github\Git\cmd;D:\Developer_Programs\ConEmu\ConEmu\Scripts;D:\Developer_Programs\ConEmu;D:\Developer_Programs\ConEmu\ConEmu;C:\Python27;C:\Python27\Scripts;D:\Developer_Programs\AVR\bin;D:\Developer_Programs\AVR\utils\bin;D:\Developer_Programs\Python3;D:\Developer_Programs\Python3\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;D:\Developer_Programs\Java\jdk1.8.0_45\bin;D:\Developer_Programs\AndroidStudio\SDK\platform-tools;D:\Developer_Programs\AndroidStudio\SDK\tools;C:\MinGW\bin;E:\New folder\runtime\win64;E:\New folder\bin;E:\New folder\polyspace\bin;D:\Developer_Programs\NODEJS;D:\Developer_Programs\Bash;D:\Developer_Programs\Bash\bin;D:\Developer_Programs\Bash\usr\local\wbin;D:\Developer_Programs\rust\bin;D:\Developer_Programs\yarn\bin;C:\Ruby23-x64\bin;C:\Users\User\AppData\Local\atom\bin;C:\Users\User\AppData\Roaming\npm;C:\Users\User\AppData\Local\Yarn\.bin;D:\Developer_Programs\git\Github\Git\usr\bin\vendor_perl;D:\Developer_Programs\git\Github\Git\usr\bin\core_perl
+10 verbose lifecycle v1@0.0.0~compile: CWD: C:\Users\User\Desktop\final-year-project-arduino\fyp
+11 silly lifecycle v1@0.0.0~compile: Args: [ '/d /s /c',
+11 silly lifecycle   'webpack --debug --watch --display-error-details' ]
+12 silly lifecycle v1@0.0.0~compile: Returned: code: 3221225786  signal: null
+13 info lifecycle v1@0.0.0~compile: Failed to exec compile script
+14 verbose stack Error: v1@0.0.0 compile: `webpack --debug --watch --display-error-details`
+14 verbose stack Exit status 3221225786
+14 verbose stack     at EventEmitter.<anonymous> (D:\Developer_Programs\NODEJS\node_modules\npm\lib\utils\lifecycle.js:255:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (D:\Developer_Programs\NODEJS\node_modules\npm\lib\utils\spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:877:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid v1@0.0.0
+16 verbose cwd C:\Users\User\Desktop\final-year-project-arduino\fyp
+17 error Windows_NT 6.1.7600
+18 error argv "D:\\Developer_Programs\\NODEJS\\node.exe" "D:\\Developer_Programs\\NODEJS\\node_modules\\npm\\bin\\npm-cli.js" "run" "compile"
+19 error node v7.0.0
+20 error npm  v3.10.8
+21 error code ELIFECYCLE
+22 error v1@0.0.0 compile: `webpack --debug --watch --display-error-details`
+22 error Exit status 3221225786
+23 error Failed at the v1@0.0.0 compile script 'webpack --debug --watch --display-error-details'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the v1 package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     webpack --debug --watch --display-error-details
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs v1
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls v1
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
